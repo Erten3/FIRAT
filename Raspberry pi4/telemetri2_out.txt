@@ -1,0 +1,8 @@
+Latitude: 40.1876635, Longitude: 29.1281357, Altitude: 157.64 meters
+Latitude: 40.1876647, Longitude: 29.1281281, Altitude: 157.77 meters
+Latitude: 40.1876642, Longitude: 29.1281364, Altitude: 157.77 meters
+Latitude: 40.1876632, Longitude: 29.1281354, Altitude: 157.73 meters
+Latitude: 40.187665, Longitude: 29.128119, Altitude: 157.8 meters
+Latitude: 40.1876641, Longitude: 29.1281033, Altitude: 157.6 meters
+Latitude: 40.1876653, Longitude: 29.1280868, Altitude: 157.98 meters
+Latitude: 40.1876654, Longitude: 29.1280845, Altitude: 157.93 meters
