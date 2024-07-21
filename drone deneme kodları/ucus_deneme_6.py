@@ -31,10 +31,10 @@ def set_rtl_radius(radius):
 
 
 # RTL radius değeri
-set_rtl_radius(2) # RTL yarıçapını 2 metre olarak ayarlama.
+# set_rtl_radius(2) # RTL yarıçapını 2 metre olarak ayarlama.
 
 # Görev radius değeri
-set_waypoint_radius(2) # Görev radius değerini 2 olarak ayarlama.
+# set_waypoint_radius(2) # Görev radius değerini 2 olarak ayarlama.
 
 # Safe Mode yarıçapı.
 set_geofence_radius(firat, 20)  # Bulunduğu noktadan 20 metre uzakta bulunursa RTL moduna girer. 
@@ -79,9 +79,9 @@ def gorev_ekle():
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 0, 0, 0, 0, 0, 0, 0, 2))
 
     # WAYPOINT
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873845, 29.1287973, 2))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873057, 29.1288556, 2))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873077, 29.1287477, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1872263, 29.1292948, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1872242, 29.1293746, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1871745, 29.1293740, 2))
 
     # RTL
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_RETURN_TO_LAUNCH, 0, 0, 0, 0, 0, 0, 0, 0, 0))
