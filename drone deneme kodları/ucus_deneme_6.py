@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from dronekit import Command, connect, VehicleMode, LocationGlobalRelative
 import time
 from pymavlink import mavutil
@@ -77,8 +79,9 @@ def gorev_ekle():
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_TAKEOFF, 0, 0, 0, 0, 0, 0, 0, 0, 2))
 
     # WAYPOINT
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873927, 29.1287862, 2))
-    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873208, 29.1288164, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873845, 29.1287973, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873057, 29.1288556, 2))
+    komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 0, 0, 0, 0, 0, 0, 40.1873077, 29.1287477, 2))
 
     # RTL
     komut.add(Command(0, 0, 0, mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT, mavutil.mavlink.MAV_CMD_NAV_RETURN_TO_LAUNCH, 0, 0, 0, 0, 0, 0, 0, 0, 0))
@@ -97,14 +100,33 @@ gorev_ekle() # Görevi başltır.
 komut.next = 0
 
 firat.mode = VehicleMode("AUTO")
+sn = 0
+
+filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + ".txt"
+
+file = open(filename, "w")
+file.write(str(datetime.now()) + "\n")
+file.close()
+
 
 while True:
     next_waypoint = komut.next
+    sn +=1
+    print(f"Sıradaki komut: {next_waypoint}")
+    print(f"Anlık yükseklik: {firat.location.global_relative_frame.alt}")
+    print(f"Anlık enlem: {firat.location.global_relative_frame.lat}")
+    print(f"Anlık boylam: {firat.location.global_relative_frame.lon}")
+    print(f"Anlık hız: {firat.airspeed}")
 
-    print(f"Sıradaki komut {next_waypoint}")
+    with open(filename, mode='a') as file:
+        file.write(str(sn) + "\n" + str(next_waypoint) + "\n" + str(firat.location.global_relative_frame.alt) + "\n" + str(firat.location.global_relative_frame.lat) + "\n" + str(firat.location.global_relative_frame.lon) + str(firat.airspeed) + "\n"  )
+
+        
     time.sleep(1)
 
-    if next_waypoint is 4:
+
+
+    if next_waypoint is 5:
         print("Görev bitti.")
         break
 
