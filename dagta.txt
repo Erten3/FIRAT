@@ -1,0 +1,32 @@
+import cv2
+import pymysql
+
+# Kamera açma
+cap = cv2.VideoCapture(0)
+
+# Veritabanına bağlanma
+connection = pymysql.connect(
+    host='veritabanı_ip_adresi',
+    user='kullanıcı_adı',
+    password='şifre',
+    database='veritabanı_adı'
+)
+
+try:
+    with connection.cursor() as cursor:
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            # Görüntüyü sıkıştırma
+            _, buffer = cv2.imencode('.jpg', frame)
+
+            # Görüntüyü BLOB olarak veritabanına ekleme
+            sql = "INSERT INTO images (image_data) VALUES (%s)"
+            cursor.execute(sql, (buffer.tobytes(),))
+            connection.commit()
+
+finally:
+    cap.release()
+    connection.close()
